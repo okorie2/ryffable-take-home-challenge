@@ -1,35 +1,34 @@
-# Ryffable Challenge Take Home
-Short technical challenge for ryffable.
-
-Congrats in passing Ryffable's first round of interview!
-
-Kindly find the project assignment. You have 24 hours to complete your assignment from the first time you get the email.
-
-Remember to consistently commit your progress throughout your development!
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
-You will need to use the following technologies for the project:
 
-## Task
-- Create a test api endpoint using next js api route with the following parameters: name, place, animal, food, things
-- Populate it with data in alphabetucal order from A to Z.
-- Create a table with pagination and search functionality using next js frontend
-- Populate the table with the data from the api endpoint you created.
+First, run the development server:
 
-### Note
-- Use NextJS and Tailwind for frontend
+```bash
+npm run dev
+# or
+yarn dev
+```
 
-## Metrics:
-You will be assessed based on:
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-- clean code
-- good design of databases etc.
-- error handling
-- threading safety
-- coding best practices / design patterns
-- Features completed
-- Time
-- Code Quality
+You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
 
-## Submission
-Kindly submit your production ready code by creating a pull request to github, and deploying the final product through heroku.
+[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+
+The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+
+## Learn More
+
+To learn more about Next.js, take a look at the following resources:
+
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
