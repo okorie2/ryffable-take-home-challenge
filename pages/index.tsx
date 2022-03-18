@@ -1,33 +1,65 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import  React ,{ useEffect, useState, ChangeEvent } from "react";
 import right from "../public/svgs/arrow-right.svg";
 import left from "../public/svgs/arrow-left.svg";
 import Image from "next/image";
 
+interface  Table{
+  
+    name: string,
+    place: string,
+    animal: string,
+    food: string,
+    thing: string,
+  
+}
 export default function Home() {
-  const [rows, setRows] = useState([]);
-  const [defaultRows, setDefaultRows] = useState([]);
-  const [mainRows, setMainRows] = useState([]);
 
+  const [rows, setRows] = useState([]as Array<Table>);
+  const [defaultRows, setDefaultRows] = useState([]as Array<Table>);
+  const [mainRows, setMainRows]  = useState([] as Array<Table>);
   const getData = async () => {
     const response = await axios.get("/api/table_data");
     console.log(response.data);
     setMainRows(response.data?.data);
   };
 
+  const handleSearch = (e:ChangeEvent<HTMLInputElement>)=>{
+    setDefaultRows(
+      mainRows.filter(
+        (item) =>
+          item.name
+            .toLowerCase()
+            .includes(e.target.value.toLowerCase()) ||
+          item.place
+            .toLowerCase()
+            .includes(e.target.value.toLowerCase()) ||
+          item.animal
+            .toLowerCase()
+            .includes(e.target.value.toLowerCase()) ||
+          item.food
+            .toLowerCase()
+            .includes(e.target.value.toLowerCase()) ||
+          item.thing
+            .toLowerCase()
+            .includes(e.target.value.toLowerCase())
+      )
+    )
+  }
+
   const pageLength = 10;
 
   const [currentPage, setCurrentPage] = useState(0);
 
   const setPagination = () => {
-    var pageNumbers = 0;
+    let pageNumbers = 0;
     if (defaultRows.length % pageLength === 0) {
       pageNumbers = defaultRows.length / pageLength;
     } else {
       pageNumbers = defaultRows.length / pageLength + 1;
     }
     const numbers = [];
-    var x = 1;
+    let x = 1;
     while (x < pageNumbers) {
       numbers.push(x);
       x += 1;
@@ -68,27 +100,8 @@ export default function Home() {
             type="text"
             className="outline-none p-2 border-2 border-[#dddddd]"
             placeholder="Search"
-            onChange={(e) =>
-              setDefaultRows(
-                mainRows.filter(
-                  (item) =>
-                    item.name
-                      .toLowerCase()
-                      .includes(e.target.value.toLowerCase()) ||
-                    item.place
-                      .toLowerCase()
-                      .includes(e.target.value.toLowerCase()) ||
-                    item.animal
-                      .toLowerCase()
-                      .includes(e.target.value.toLowerCase()) ||
-                    item.food
-                      .toLowerCase()
-                      .includes(e.target.value.toLowerCase()) ||
-                    item.thing
-                      .toLowerCase()
-                      .includes(e.target.value.toLowerCase())
-                )
-              )
+            onChange={
+             handleSearch
             }
           />
         </div>
